@@ -19,11 +19,19 @@ describe("Calculator", () => {
     expect(calculator.value).toBe(4);
   });
 
-  it("add function", () => {
-    calculator.set(4);
-    calculator.add(3);
+  describe("adds", () => {
+    it("add should throw error if value is greater than 100", () => {
+      expect(() => {
+        calculator.add(101);
+      }).toThrow("Value can not be greater than 100");
+    });
 
-    expect(calculator.value).toBe(7);
+    it("add function", () => {
+      calculator.set(4);
+      calculator.add(3);
+
+      expect(calculator.value).toBe(7);
+    });
   });
 
   it("subtract function", () => {
