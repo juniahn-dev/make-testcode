@@ -1,6 +1,8 @@
 const ProductService = require("../product_service_no_di");
 const ProductClient = require("../product_client");
 
+// mock말고 stub를 사용하면 더 효율적
+
 // productService를 호출했을 때 product_client도 같이 테스트가 되기 때문에
 // unit test가 되지 않음 그래서 mock 데이터를 만들어줘야 함
 jest.mock("../product_client");
