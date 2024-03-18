@@ -47,4 +47,20 @@ describe("Stack", () => {
       expect(stack.array).toEqual([1]);
     });
   });
+
+  describe("peek", () => {
+    it("empty array", () => {
+      expect(() => {
+        stack.peek();
+      }).toThrow("Array is empty");
+    });
+
+    it("returns the last pushed item but keeps it in the stack", () => {
+      stack.push(1);
+      stack.push(2);
+
+      expect(stack.peek()).toBe(2);
+      expect(stack.size()).toBe(2);
+    });
+  });
 });
