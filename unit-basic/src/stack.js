@@ -1,36 +1,40 @@
 class Stack {
   constructor() {
-    this.array = [];
+    this._size = 0;
+    this.head = null;
   }
 
   size() {
-    return this.array.length;
+    return this._size;
   }
 
-  push(number) {
-    if (!number) {
-      throw new Error("Props error");
-    } else if (typeof number !== "number") {
-      throw new Error("Props not number");
-    }
+  push(item) {
+    const node = { item, next: this.head };
+    this.head = node;
+    this._size++;
 
-    this.array.push(number);
+    if (!item) {
+      throw new Error("Props error");
+    }
   }
 
   pop() {
-    if (this.array.length === 0) {
-      throw new Error("Array is empty");
+    if (this.head === null) {
+      throw new Error("Stack is empty");
     }
+    const node = this.head;
+    this.head = node.next;
+    this._size--;
 
-    this.array.pop();
+    return node.item;
   }
 
   peek() {
-    if (this.array.length === 0) {
-      throw new Error("Array is empty");
+    if (this.head === null) {
+      throw new Error("Stack is empty");
     }
 
-    return this.array[this.size() - 1];
+    return this.head.item;
   }
 }
 
